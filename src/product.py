@@ -10,3 +10,11 @@ class Product:
         self.description = description
         self.price = price
         self.quantity = quantity
+
+    @classmethod
+    def new_product(cls, product: dict):
+        name = product["name"]
+        description = product["description"]
+        price = product["price"]
+        quantity = product["quantity"]
+        return cls(name, description, price, quantity)
