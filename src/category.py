@@ -1,6 +1,3 @@
-from src.product import Product
-
-
 class Category:
     """Класс для категории"""
     name: str
