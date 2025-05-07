@@ -72,3 +72,12 @@ def test_add_product(reset_class_counters):
 
     # Проверим, что общий счетчик увеличился
     assert Category.product_count == 2
+
+
+@pytest.fixture
+def category():
+    return Category("Электроника", "Гаджеты", [])
+
+def test_add_invalid_product(category):
+    with pytest.raises(TypeError):
+        category.add_product("не продукт")
