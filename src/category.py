@@ -18,6 +18,10 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
+    def __str__(self):
+        total_quantity = sum(product.quantity for product in self.__products)
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
+
     def add_product(self, product):
         if not isinstance(product, Product):
             raise TypeError("Можно добавить только объекты класса Product или его наследников.")
@@ -26,10 +30,7 @@ class Category:
 
     @property
     def products(self):
-        result = []
-        for product in self.__products:
-            result.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
-        return "\n".join(result)
+        return "\n".join(str(product) for product in self.__products)
 
     @property
     def product_list(self):
