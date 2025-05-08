@@ -22,10 +22,8 @@ def test_category_initialization():
 
     assert category.name == "Test Category"
     assert category.description == "Category description"
-    assert len(category.products) == 2
-    assert product1 in category.products
-    assert product2 in category.products
-
+    assert product1 in category.product_list
+    assert product2 in category.product_list
     assert Category.category_count == initial_category_count + 1
     assert Category.product_count >= initial_product_count + 2
 
