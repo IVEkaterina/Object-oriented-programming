@@ -17,3 +17,10 @@ poetry install
 1. `Product`. Для класса Product определены свойства: название (name), описание (description), цена (price), количество в наличии (quantity).
 2. `Category`. Для класса Category определены свойства: название (name), описание (description), список товаров категории (products).
 Также у класса Category есть два атрибута класса: количество категорий (category_count) и количество товаров (product_count).
+## Классы-наследники
+1. `Smartphone` - класс-наследник от исходного класса Product.
+Для класса Smartphone определены свойства: название (name), описание (description), цена (price), 
+количество в наличии (quantity), производительность (efficiency), модель (model), объем встроенной памяти (memory), цвет (color).
+2. `LawnGrass` - класс-наследник от исходного класса Product.
+Для класса LawnGrass определены свойства: название (name), описание (description), цена (price), количество в наличии (quantity),
+страна-производитель (country), срок прорастания (germination_period), цвет (color).
