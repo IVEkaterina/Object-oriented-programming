@@ -1,6 +1,6 @@
 import pytest
 
-from src.product import Product
+from src.product import Product, Smartphone, LawnGrass
 
 
 @pytest.fixture()
@@ -13,6 +13,13 @@ def test_init(product_apple):
     assert product_apple.description == "Яблоки новый урожай"
     assert product_apple.price == 123.09
     assert product_apple.quantity == 8
+
+def test_type_error_in_add():
+    smartphone1 = Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5,
+                             "S23 Ultra", 256, "Серый")
+    grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+    with pytest.raises(TypeError):
+        smartphone1 + grass1
 
 def test_str_product(product_apple):
     assert str(product_apple) == "Яблоки, 123.09 руб. Остаток: 8 шт."
