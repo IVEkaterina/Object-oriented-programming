@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import Product
+from src.product import LawnGrass, Product, Smartphone
 
 
 @pytest.fixture
@@ -19,6 +19,25 @@ def category_product(reset_class_counters):
     p5 = Product("Шоколад", "Черный", 100.0, 5)
 
     return Category("Продукты", "Продукты для приготовления торта", [p1, p2, p3, p4, p5])
+
+
+def test_type_error_in_add_product():
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    category1 = Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        [product1]
+    )
+    with pytest.raises(TypeError):
+        product1 + category1
+
+
+def test_type_error_in_add():
+    smartphone1 = Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5,
+                             "S23 Ultra", 256, "Серый")
+    grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+    with pytest.raises(TypeError):
+        smartphone1 + grass1
 
 
 def test_str_category(category_product):
