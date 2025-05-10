@@ -18,6 +18,8 @@ class Product:
 
     def __add__(self, other):
         """ Сложение всей стоимости товаров(цена*кол-во) """
+        if not isinstance(other, type(self)):
+            raise TypeError
         return (self.__price*self.quantity) + (other.__price*other.quantity)
 
     @classmethod
