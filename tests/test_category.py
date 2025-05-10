@@ -1,4 +1,5 @@
 import pytest
+
 from src.category import Category
 from src.product import Product
 
@@ -19,8 +20,10 @@ def category_product(reset_class_counters):
 
     return Category("Продукты", "Продукты для приготовления торта", [p1, p2, p3, p4, p5])
 
+
 def test_str_category(category_product):
     assert str(category_product) == "Продукты, количество продуктов: 15 шт."
+
 
 def test_init(category_product):
     assert category_product.name == "Продукты"
@@ -79,6 +82,7 @@ def test_add_product(reset_class_counters):
 @pytest.fixture
 def category():
     return Category("Электроника", "Гаджеты", [])
+
 
 def test_add_invalid_product(category):
     with pytest.raises(TypeError):

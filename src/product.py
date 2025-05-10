@@ -20,7 +20,7 @@ class Product:
         """ Сложение всей стоимости товаров(цена*кол-во) """
         if not isinstance(other, type(self)):
             raise TypeError
-        return (self.__price*self.quantity) + (other.__price*other.quantity)
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
 
     @classmethod
     def new_product(cls, product: dict):
@@ -44,6 +44,7 @@ class Product:
         else:
             self.__price = new_price
 
+
 class Smartphone(Product):
     """ Класс для смартфонов """
     efficiency: float
@@ -51,7 +52,8 @@ class Smartphone(Product):
     memory: int
     color: str
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str, memory: int, color: str):
+    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str,
+                 memory: int, color: str):
         """ Конструктор для смартфонов """
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
@@ -59,13 +61,15 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
+
 class LawnGrass(Product):
     """ Класс для газонной травы"""
     country: str
     germination_period: str
     color: str
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str,  color: str):
+    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str,
+                 color: str):
         """ Конструктор для газонной травы """
         super().__init__(name, description, price, quantity)
         self.country = country
