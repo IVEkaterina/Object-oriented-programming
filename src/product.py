@@ -38,15 +38,17 @@ class BaseProduct(ABC):
         pass
 
 
-class Product(BaseProduct):
+class MixingPrint:
+    def __init__(self, *args, **kwargs):
+        print(f'{self.__class__.__name__}{args}')
+
+
+class Product(MixingPrint, BaseProduct):
     """ Класс для продукта """
-    name: str
-    description: str
-    price: float
-    quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """ Конструктор для продукта """
+        super().__init__(name, description, price, quantity)
         self.name = name
         self.description = description
         self.__price = price
