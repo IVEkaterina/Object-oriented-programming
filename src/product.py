@@ -1,5 +1,45 @@
-class Product:
-    """Класс для продукта"""
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC):
+    """ Абстрактный класс для продукта """
+
+    @abstractmethod
+    def __str__(self):
+        """ Метод для строкового отображения """
+        pass
+
+    @abstractmethod
+    def __init__(self):
+        """ Конструктор для продукта """
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        """ Метод для сложения стоимости товаров """
+        pass
+
+    @classmethod
+    @abstractmethod
+    def new_product(cls, product: dict):
+        """ Класс-метод для создания нового продукта """
+        pass
+
+    @property
+    @abstractmethod
+    def price(self):
+        """ Метод, возвращающий цену """
+        pass
+
+    @price.setter
+    @abstractmethod
+    def price(self, new_price: float):
+        """ Метод для проверки цены """
+        pass
+
+
+class Product(BaseProduct):
+    """ Класс для продукта """
     name: str
     description: str
     price: float
