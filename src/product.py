@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class BaseProduct(ABC):
-    """ Абстрактный класс для продукта """
+    """ Абстратный класкс для продукта """
 
     @abstractmethod
     def __str__(self):
@@ -38,12 +38,12 @@ class BaseProduct(ABC):
         pass
 
 
-class MixingPrint:
+class MixinPrint:
     def __init__(self, *args, **kwargs):
         print(f'{self.__class__.__name__}{args}')
 
 
-class Product(MixingPrint, BaseProduct):
+class Product(MixinPrint, BaseProduct):
     """ Класс для продукта """
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
