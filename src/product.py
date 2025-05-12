@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class BaseProduct(ABC):
+class BaseProduct(ABC): # pragma: no cover
     """ Абстратный класкс для продукта """
 
     @abstractmethod
