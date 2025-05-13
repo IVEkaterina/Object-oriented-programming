@@ -5,6 +5,10 @@ import pytest
 
 from src.product import LawnGrass, Product, Smartphone
 
+def test_value_error_in_quantity():
+    with pytest.raises(ValueError):
+        product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+
 
 @pytest.fixture()
 def product_apple():
