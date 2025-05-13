@@ -1,12 +1,54 @@
-class Product:
-    """Класс для продукта"""
-    name: str
-    description: str
-    price: float
-    quantity: int
+from abc import ABC, abstractmethod
+
+
+class BaseProduct(ABC): # pragma: no cover
+    """ Абстратный класкс для продукта """
+
+    @abstractmethod
+    def __str__(self):
+        """ Метод для строкового отображения """
+        pass
+
+    @abstractmethod
+    def __init__(self):
+        """ Конструктор для продукта """
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        """ Метод для сложения стоимости товаров """
+        pass
+
+    @classmethod
+    @abstractmethod
+    def new_product(cls, product: dict):
+        """ Класс-метод для создания нового продукта """
+        pass
+
+    @property
+    @abstractmethod
+    def price(self):
+        """ Метод, возвращающий цену """
+        pass
+
+    @price.setter
+    @abstractmethod
+    def price(self, new_price: float):
+        """ Метод для проверки цены """
+        pass
+
+
+class MixinPrint:
+    def __init__(self, *args, **kwargs):
+        print(f'{self.__class__.__name__}{args}')
+
+
+class Product(MixinPrint, BaseProduct):
+    """ Класс для продукта """
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """ Конструктор для продукта """
+        super().__init__(name, description, price, quantity)
         self.name = name
         self.description = description
         self.__price = price

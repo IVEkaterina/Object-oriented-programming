@@ -1,3 +1,6 @@
+from io import StringIO
+from unittest.mock import patch
+
 import pytest
 
 from src.product import LawnGrass, Product, Smartphone
@@ -6,6 +9,20 @@ from src.product import LawnGrass, Product, Smartphone
 @pytest.fixture()
 def product_apple():
     return Product("Яблоки", "Яблоки новый урожай", 123.09, 8)
+
+
+@patch('sys.stdout', new_callable=StringIO)
+def test_product_initialization_prints_info(mock_stdout):
+    product = Product("Яблоки", "Яблоки новый урожай", 123.09, 8)
+    output = mock_stdout.getvalue().strip()
+    expected_output = "Product('Яблоки', 'Яблоки новый урожай', 123.09, 8)"
+    assert output == expected_output
+
+
+def test_mixin_print_output(capsys):
+    Product("Laptop", "Ultrabook", 1499.99, 5)
+    captured = capsys.readouterr()
+    assert "Product('Laptop', 'Ultrabook', 1499.99, 5)\n" == captured.out
 
 
 def test_init(product_apple):
