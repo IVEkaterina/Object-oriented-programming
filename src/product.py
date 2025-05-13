@@ -53,6 +53,8 @@ class Product(MixinPrint, BaseProduct):
         self.description = description
         self.__price = price
         self.quantity = quantity
+        if self.quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
 
     def __str__(self):
         """ Строковое отображение класса Product """
