@@ -21,6 +21,19 @@ def category_product(reset_class_counters):
     return Category("Продукты", "Продукты для приготовления торта", [p1, p2, p3, p4, p5])
 
 
+@pytest.fixture
+def category():
+    return Category("Электроника", "Гаджеты", [])
+
+
+def test_middle_price_successful(category_product):
+    assert category_product.middle_price() == 68
+
+def test_with_empty_list_product():
+    c = Category("Продукты", "Продукты для приготовления торта", [])
+    assert c.middle_price() == 0
+
+
 def test_type_error_in_add_product():
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     category1 = Category(
@@ -96,11 +109,6 @@ def test_add_product(reset_class_counters):
 
     # Проверим, что общий счетчик увеличился
     assert Category.product_count == 2
-
-
-@pytest.fixture
-def category():
-    return Category("Электроника", "Гаджеты", [])
 
 
 def test_add_invalid_product(category):

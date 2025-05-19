@@ -1,3 +1,5 @@
+from itertools import product
+
 from src.product import Product
 
 
@@ -23,6 +25,16 @@ class Category:
         """ Строковое отображение класса Category """
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."
+
+    def middle_price(self):
+        try:
+            all_price = 0
+            for pro in self.__products:
+                all_price += pro.price
+            middle_price = all_price / len(self.__products)
+            return middle_price
+        except ZeroDivisionError:
+            return 0
 
     def add_product(self, product: list) -> None:
         """ Метод для добавления товаров в категорию """
